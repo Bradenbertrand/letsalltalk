@@ -38,7 +38,7 @@ const Chatroom = (props) => {
 
     useEffect(() => {
         dummy.current.scrollIntoView({ behavior: 'smooth' });
-    }, [])
+    })
 
     const ChatMessage = (props) => {
         const { text, uid, photoUrl } = props.message
@@ -101,7 +101,10 @@ const Chatroom = (props) => {
             
         </List>
         <form onSubmit={!formValue ? {} : sendMessage}> 
+        <HStack>
         <Input  w={['85vw', '70vw', '45vw']} bottom={0} size='lg' value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Press enter to send" />
+        <Button size="lg" type="submit" disabled={!formValue}>Send</Button>
+        </HStack>
         </form>
         </VStack>
 
