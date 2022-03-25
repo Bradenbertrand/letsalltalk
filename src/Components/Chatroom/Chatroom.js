@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
 import firebase from "firebase/compat/app";
-import 'firebase/compat/firestore';
+import 'firebase/firestore';
 import 'firebase/compat/auth';
 import {
   ChakraProvider,
@@ -30,7 +30,7 @@ import { toHaveFormValues } from "@testing-library/jest-dom/dist/matchers";
 const Chatroom = (props) => {
     const dummy = useRef();
     const messagesRef = props.firestore.collection('messages');
-    const query = messagesRef.orderBy('createdAt').limit(25);
+    const query = messagesRef.orderBy('createdAt');
 
     const [messages] = useCollectionData(query, {idField: 'id'})
 
