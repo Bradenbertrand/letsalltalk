@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import firebase from "firebase/compat/app";
 import 'firebase/firestore';
 import 'firebase/compat/auth';
@@ -35,6 +35,10 @@ const Chatroom = (props) => {
     const [messages] = useCollectionData(query, {idField: 'id'})
 
     const [formValue, setFormValue] = useState("");
+
+    useEffect(() => {
+        dummy.current.scrollIntoView({ behavior: 'smooth' });
+    }, [])
 
     const ChatMessage = (props) => {
         const { text, uid, photoUrl } = props.message
